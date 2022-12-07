@@ -95,7 +95,7 @@ Class OutputmodMinify
     // CSS Minifier => http://ideone.com/Q5USEF + improvement(s)
     public function minify_css($input) {
         if(trim($input) === "") return $input;
-        return preg_replace(
+        $replaced = preg_replace(
             array(
                 // Remove comment(s)
                 '#("(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\')|\/\*(?!\!)(?>.*?\*\/)|^\s*|\s*$#s',
@@ -133,6 +133,7 @@ Class OutputmodMinify
                 '$1$2'
             ),
         $input);
+        return str_replace('fill=none', '', $replaced);
     }
 
     // JavaScript Minifier
